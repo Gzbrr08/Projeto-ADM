@@ -1,0 +1,17 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql_projeto_adm
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: projeto_adm_db
+      MYSQL_USER: projeto_adm_user
+      MYSQL_PASSWORD: projeto_adm_pass
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data_projeto_adm:/var/lib/mysql
+
+volumes:
+  mysql_data_projeto_adm:
