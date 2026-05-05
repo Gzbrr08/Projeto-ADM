@@ -1,16 +1,23 @@
-@extends('layouts.default')
-@section('page-title', 'Adicionar Usuário')
-
-@section('content')
-    <form action="{{ route('users.store') }}" method="POST" novalidate>
+ <div class="card">
+    <form action="{{ route('users.update', $user->id) }}" 
+        method="POST"
+    >
         @csrf
-    <div class="mb-3">
+        @method('PUT')
+    </form>
+    <div class="card-header">
+        Dados Básicos
+    </div>
+
+     <div class="card-body">
+
+        <div class="mb-3">
         <label class="form-label">Nome</label>
         <input 
             required
             type="text"
             name="name"
-            value="{{ old('name') }}"
+            value="{{ old('name') ?? $user->name }}"
             class="form-control @error('name') is-invalid @enderror"
             id="exampleInputEmail1" aria-describedby="emailHelp">
 
@@ -27,7 +34,7 @@
             required
             type="email"
             name="email"
-            value="{{ old('email') }}"
+            value="{{ old('email') ?? $user->email }}"
             class="form-control @error('email') is-invalid @enderror"
             id="exampleInputEmail1" aria-describedby="emailHelp">
 
@@ -41,7 +48,7 @@
         <div class="mb-3">
         <label class="form-label">Senha</label>
         <input 
-            required
+            
             type="password"
             name="password"
             class="form-control @error('password') is-invalid @enderror"
@@ -54,7 +61,17 @@
             @enderror
         </div>
 
-  <button type="submit" class="btn btn-primary">Adicionar</button>
-  <a href="{{ route('users.index') }}" class="btn btn-secondary">Voltar</a>
-</form>
-@endsection
+     </div>
+
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary">Atualizar</button>
+        <a href="{{ route('users.index') }}" class="btn btn-secondary">Voltar</a>
+    </div>
+
+    </div>
+
+       
+    
+
+        
+  

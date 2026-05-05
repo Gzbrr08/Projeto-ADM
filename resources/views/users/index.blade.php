@@ -5,6 +5,11 @@
    <a href="{{ route('users.create') }}" class="btn btn-primary">Adicionar</a>
 @endsection
 @section('content')
+  @if(session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+  @endif
     <table class="table">
   <thead>
     <tr>
@@ -21,8 +26,17 @@
       <td>{{$user->name}}</td>
       <td>{{$user->email}}</td>
       <td>
-        <a href="" class="btn btn-primary btn-sm">Editar</a>
-        <a href="" class="btn btn-danger btn-sm">Excluir</a>
+        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary btn-sm">Editar</a>
+        <form 
+            action="{{ route('users.destroy', $user->id) }}"
+            method="POST"
+          >
+          
+          @csrf
+          @method('DELETE')
+            <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
+        </form>
+
         </td>
     </tr>
        @endforeach
