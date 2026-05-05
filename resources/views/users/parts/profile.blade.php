@@ -35,7 +35,7 @@
         <input 
             required
             type="text"
-            name="address".....
+            name="address"
             value="{{ old('address') }}"
             class="form-control"
             id="exampleInputEmail1" aria-describedby="emailHelp">

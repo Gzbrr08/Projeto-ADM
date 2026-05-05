@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
     Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users.index');
 
     Route::get('users/create', [App\Http\Controllers\UserController::class, 'create'])->name('users.create');
-    Route::post('users/create', [App\Http\Cotrollers\UserController::class, 'store'])->name('users.store');
+    Route::post('users/create', [App\Http\Controllers\UserController::class, 'store'])->name('users.store');
 
     Route::get('users/{user}',[App\Http\Controllers\UserController::class, 'edit'])->name('users.edit');
     Route::put('users/{user}',[App\Http\Controllers\UserController::class, 'update'])->name('users.update');
